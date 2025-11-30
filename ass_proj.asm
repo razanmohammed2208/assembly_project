@@ -6,7 +6,7 @@
     msg3 db 13,10,"player 1 :Enter choice (H=Rock, P=Paper, S=Scissors): $"
     msg4 db 13,10,"player 2 :Enter choice (H=Rock, P=Paper, S=Scissors): $"
     winner_msg db 13,10,"Winner is: $"
-    msg_tie db 13,10,"It's a TIE!$" ; ????? ???????
+    msg_tie db 13,10,"It's a TIE!$" 
     pname1 db 20 dup(0)
     pname2 db 20 dup(0)
     choice1 db 0
@@ -98,10 +98,6 @@ ShowWinner:
 
     mov ax, 0B800h
     mov es, ax
-
-    ; Row = 10 (???? ???? ??? ????)
-    ; Column = 35 (??? Winner is ?????? ???????)
-    ; DI = row*160 + col*2
     mov di, (7 * 160) + (35 * 2)
 
 print_loop:
@@ -115,9 +111,6 @@ print_loop:
     add di, 2
     inc si
     jmp print_loop
-
-
-
 
 ;----------------------------------
 Exit:
@@ -153,5 +146,6 @@ GetChar proc
     int 21h
     ret
 GetChar endp
+
 
 end start
